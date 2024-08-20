@@ -15,6 +15,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mysql2": "^2.3.0",
+    "nvm": "^0.0.4",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0"
   },
