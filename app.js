@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000
 const flash = require('connect-flash')
 const session = require('express-session')
 const SESSION_SECRET = 'secret'
+const passport = require('./config/passport')
 
 app.engine('hbs', handlebars({ extname: '.hbs' }))
 app.set('view engine', 'hbs')
@@ -15,6 +16,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(flash())
 app.use((req, res, next) => {
   res.locals.success_messages = req.flash('success_messages') // 設定 success_msg 訊息
