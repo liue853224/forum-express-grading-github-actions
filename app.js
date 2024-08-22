@@ -6,8 +6,8 @@ const port = process.env.PORT || 3000
 const flash = require('connect-flash')
 const session = require('express-session')
 const SESSION_SECRET = 'secret'
-const { getUser } = require('./helpers/auth-helpers')
 const passport = require('./config/passport')
+const { getUser } = require('./helpers/auth-helpers')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 
 app.engine('hbs', handlebars({ extname: '.hbs', helpers: handlebarsHelpers }))
@@ -25,6 +25,7 @@ app.use((req, res, next) => {
   res.locals.success_messages = req.flash('success_messages') // 設定 success_msg 訊息
   res.locals.error_messages = req.flash('error_messages') // 設定 warning_msg 訊息
   res.locals.user = getUser(req)
+  console.log(res.locals.user)
   next()
 })
 app.use(routes)
