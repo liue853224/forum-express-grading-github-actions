@@ -35,7 +35,7 @@ const userController = {
   },
   logout: (req, res, next) => {
     req.flash('success_messages', '登出成功！')
-    req.logout(function (err) {
+    req.logout(err => {
       if (err) { return next(err) }
       res.redirect('/signin')
     })
