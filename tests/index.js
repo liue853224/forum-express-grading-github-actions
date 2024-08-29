@@ -2,7 +2,7 @@ const request = require('supertest')
 
 const app = require('../app')
 
-describeP('# 測試環境初始化', function () {
+describe('# 測試環境初始化', function () {
   context('# First Test Case', () => {
     it(' GET /admin/users ', done => {
       request(app)

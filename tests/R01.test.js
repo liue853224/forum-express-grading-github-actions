@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const request = require('supertest')
 const chai = require('chai')
 const sinon = require('sinon')
@@ -16,7 +17,7 @@ describe('# R01', () => {
         .post('/signin')
         .type('urlencoded')
         .send('email=root@example.com&password=123')
-        // 期待登入驗證回應失敗，重新導向 /signin
+        // 期待登入驗證回應失敗，重新導向 / signin
         .expect('Location', '/signin')
         .expect(302, done)
     })

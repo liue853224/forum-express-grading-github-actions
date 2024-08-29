@@ -2,6 +2,9 @@
 const faker = require('faker')
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    // 將資料的ID起始值設為1
+    await queryInterface.sequelize.query('ALTER TABLE restaurants AUTO_INCREMENT = 1;')
+    // 插入50筆測試資料
     await queryInterface.bulkInsert('Restaurants',
       Array.from({ length: 50 }, () => ({
         name: faker.name.findName(),
