@@ -2,14 +2,11 @@
 const bcrypt = require('bcryptjs')
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    // 將資料的ID起始值設為1
-    await queryInterface.sequelize.query('ALTER TABLE users AUTO_INCREMENT = 1;')
-    // 一次新增三筆資料
-    await queryInterface.bulkInsert('Users', [{
+    await queryInterface.bulkInsert('Users', [{ // 一次新增三筆資料
       email: 'root@example.com',
       password: await bcrypt.hash('12345678', 10),
       is_admin: true,
-      name: 'admin',
+      name: 'root',
       created_at: new Date(),
       updated_at: new Date()
     }, {
@@ -28,8 +25,7 @@ module.exports = {
       updated_at: new Date()
     }], {})
   },
-
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface, Sequelize) => { // 清空資料表中所有資料
     await queryInterface.bulkDelete('Users', {})
   }
 }
