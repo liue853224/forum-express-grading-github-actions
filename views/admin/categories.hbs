@@ -7,15 +7,19 @@
     <input type="text" class="form-control" id="name" name="name" value="{{category.name}}">
   </div>
   <div class="mb-3 mt-2 col-2">
-    <button type="submit" class="btn btn-warning">修改</button>
+    <div class="row">
+    <button type="submit" class="col-4 btn btn-warning">修改</button>
+    <a class="col-8 btn btn-link link-secondary" href="/admin/categories">or Create New</a>
+    </div>
   </div>
+    
   </div>
 </form>
 {{else}}
 <form class="container" action="/admin/categories" method="POST">
   <div class="row justify-content-start">
   <div class="mb-3 mt-2 col-4">
-    <input type="text" class="form-control" id="name" name="name">
+    <input type="text" class="form-control" placeholder="請輸入要創建的類別名稱" id="name" name="name">
   </div>
   <div class="mb-3 mt-2 col-2">
     <button type="submit" class="btn btn-primary">創建</button>
