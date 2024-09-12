@@ -44,6 +44,7 @@ const restaurantController = {
         return restaurant.increment('viewCounts')
       })
       .then(restaurant => {
+        console.log('我要看的資料在這:' + JSON.stringify(restaurant.toJSON(), null, 2))
         res.render('restaurant', { restaurant: restaurant.toJSON() })
       })
       .catch(err => next(err))
