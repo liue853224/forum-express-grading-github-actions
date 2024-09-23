@@ -1,5 +1,5 @@
 const db = require('../models')
-const { User } = db
+const { User, Comment, Restaurant } = db
 const bcrypt = require('bcryptjs')
 const { localFileHandler } = require('../helpers/file-helpers')
 
@@ -42,10 +42,18 @@ const userController = {
     })
   },
   getUser: (req, res, next) => {
-    return User.findByPk(req.params.id)
-      .then(user => {
+    return Promise.all([User.findByPk(req.params.id), Comment.findAll({
+      raw: true,
+      include: Restaurant,
+      nest: true,
+      where: {
+        userId: req.params.id
+      }
+    })])
+      .then(([user, comments]) => {
         if (!user) throw new Error("User didn't exists!")
-        return res.render('users/profile', { user: user.toJSON() })
+        console.log('評論資料:' + JSON.stringify(comments, null, 2))
+        return res.render('users/profile', { user: user.toJSON(), comments })
       })
       .catch(err => next(err))
   },
