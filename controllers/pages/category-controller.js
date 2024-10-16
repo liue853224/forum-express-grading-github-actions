@@ -1,4 +1,4 @@
-const { Category } = require('../models/')
+const { Category } = require('../../models')
 const categoryController = {
   getCategories: (req, res, next) => {
     console.log('req.params.id:' + req.params.id)
