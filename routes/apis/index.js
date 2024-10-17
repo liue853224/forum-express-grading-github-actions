@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const restController = require('../../controllers/apis/restaurant-controller')
-const adminController = require('../../controllers/apis/admin-controller')
+const admin = require('./modules/admin')
+const apiErrorHandler = require('../../middleware/error-handler')
 
+router.use('/admin', admin)
 router.get('/restaurants', restController.getRestaurants)
-router.get('/admin/restaurants', adminController.getRestaurants)
+router.use('/', apiErrorHandler.apiErrorHandler)
 
 module.exports = router
