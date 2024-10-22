@@ -9,6 +9,4 @@ const localFileHandler = file => { // file 是 multer 處理完的檔案
       .catch(err => reject(err))
   })
 }
-module.exports = {
-  localFileHandler
-}
+module.exports = localFileHandler

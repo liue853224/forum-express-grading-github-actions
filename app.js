@@ -15,6 +15,7 @@ const methodOverride = require('method-override')
 app.engine('hbs', handlebars.engine({ extname: '.hbs', helpers: handlebarsHelpers }))
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(session({
   secret: SESSION_SECRET,
   resave: false,
