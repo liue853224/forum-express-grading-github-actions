@@ -178,7 +178,7 @@ const userController = {
         res.render('top-users', { users: result })
       })
       .catch(err => next(err))
-  }, // 加逗點，新增以下
+  },
   addFollowing: (req, res, next) => {
     const { userId } = req.params
     Promise.all([
